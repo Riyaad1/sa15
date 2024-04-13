@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>U.S Presidents Quiz</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="quiz.css">
+    </head>
+    <body>
+        <div class="quiz-box", style="display: block;">
+            <h2>U.S Presidents Quiz</h2>
+            <hr>
+            <div class="questions">
+                <h4>1. Who Was the First U.S President?</h4>
+                <label class="question-text" for="q1-a">
+                    <input class="question" type="radio" name="q1" id="q1-a">
+                    George Washington
+                </label>
+                <label class="question-text" for="q1-b">
+                    <input class="question" type="radio" name="q1" id="q1-b">
+                    Barack Obama
+                </label>
+                <label class="question-text" for="q1-c">
+                    <input class="question" type="radio" name="q1" id="q1-c">
+                    Theodore Roosevelt
+                </label>
+                <label class="question-text" for="q1-d">
+                    <input class="question" type="radio" name="q1" id="q1-d">
+                    Herbert Hoover
+                </label>
+                <h4>2. Who Was the Sixth U.S President?</h4>
+                <label class="question-text" for="q2-a">
+                    <input class="question" type="radio" name="q2" id="q2-a">
+                    James Monroe
+                </label>
+                <label class="question-text" for="q2-b">
+                    <input class="question" type="radio" name="q2" id="q2-b">
+                    Andrew Jackson
+                </label>
+                <label class="question-text" for="q2-c">
+                    <input class="question" type="radio" name="q2" id="q2-c">
+                    Calvin Coolidge
+                </label>
+                <label class="question-text" for="q2-d">
+                    <input class="question" type="radio" name="q2" id="q2-d">
+                    John Quincy Adams
+                </label>
+                <h4>3. Who Was the Fortieth U.S President?</h4>
+                <label class="question-text" for="q3-a">
+                    <input class="question" type="radio" name="q3" id="q3-a">
+                    Harry S. Truman
+                </label>
+                <label class="question-text" for="q3-b">
+                    <input class="question" type="radio" name="q3" id="q3-b">
+                    George Washington
+                </label>
+                <label class="question-text" for="q3-c">
+                    <input class="question" type="radio" name="q3" id="q3-c">
+                    Ronald Reagan
+                </label>
+                <label class="question-text" for="q3-d">
+                    <input class="question" type="radio" name="q3" id="q3-d">
+                    Donald Trump
+                </label>
+                <h4>4. Who Was the Twenty-Second U.S President? </h4>
+                <label class="question-text" for="q4-a">
+                    <input class="question" type="radio" name="q4" id="q4-a">
+                    Grover Cleveland
+                </label>
+                <label class="question-text" for="q4-b">
+                    <input class="question" type="radio" name="q4" id="q4-b">
+                    Ulysses S. Grant
+                </label>
+                <label class="question-text" for="q4-c">
+                    <input class="question" type="radio" name="q4" id="q4-c">
+                    Abraham Lincoln
+                </label>
+                <label class="question-text" for="q4-d">
+                    <input class="question" type="radio" name="q4" id="q4-d">
+                    John Tyler
+                </label>
+                <h4>5. Who Was the Seventh U.S President?</h4>
+                <label class="question-text" for="q5-a">
+                    <input class="question" type="radio" name="q5" id="q5-a">
+                    Thomas Jefferson
+                </label>
+                <label class="question-text" for="q5-b">
+                    <input class="question" type="radio" name="q5" id="q5-b">
+                    Andrew Jackson
+                </label>
+                <label class="question-text" for="q5-c">
+                    <input class="question" type="radio" name="q5" id="q5-c">
+                    James Carter
+                </label>
+                <label class="question-text" for="q5-d">
+                    <input class="question" type="radio" name="q5" id="q5-d">
+                    George H.W. Bush
+                </label>
+                <button type="button" id="submition" class="submit-text">Submit</button>
+            </div>
+        </div>
+        <div id="final-score" style="display: none;">
+            <h2 id="score-result"></h2>
+            <button type="button" id="retry" class="retry-text">Retry</button>
+        </div>
+
+        <script>
+            const submitButton = document.getElementById("submition");
+            const retryButton = document.getElementById("retry");
+            submitButton.addEventListener("click", function(event){
+                event.preventDefault();
+                let score = 0
+
+                const correctAnswer = ["q1-a", "q2-d", "q3-c", "q4-a", "q5-b"]
+                
+                for (let i = 1; i <= 5; i++) {
+                    const selection = document.querySelector(`input[name=q${i}]:checked`);
+                    if (selection.id === correctAnswer[i - 1]) {
+                        score++;
+                    }
+                    console.log("yes")
+                    console.log(score)
+                }
+                
+                document.querySelector(".quiz-box").style.display = "none";
+                document.getElementById("final-score").style.display = "block";
+
+                const result = document.getElementById('score-result');
+                result.textContent = `Your score is: ${score}/5`;
+            });
+
+            retryButton.addEventListener("click", function(event) {
+                event.preventDefault();
+                window.location.reload();
+            });
+        </script>
+    </body>
+</html>
